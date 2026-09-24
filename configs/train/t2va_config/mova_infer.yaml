@@ -1,0 +1,15 @@
+inference:
+  # Video
+  height: 352
+  width: 640
+  num_frames: 193
+  fps: 24.0
+
+  # Diffusion
+  num_inference_steps: 50
+  cfg_scale: 5.0
+  visual_shift: 5.0
+  audio_shift: 5.0
+
+  # Seed
+  seed: 42

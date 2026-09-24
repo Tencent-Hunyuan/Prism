@@ -1,0 +1,237 @@
+configs:
+  - name: wan_15B_ti2va_720p_init_top_k_p
+    exp_base: "/path/exp"
+    # resume: "/path/ckpt_folder"
+
+    inject_config: "configs/train/t2va_config/wan_15B_ti2va_720p_init_top_k_p.yaml"
+
+    sp_size: 8
+    fine_grained_gc: "false"
+    checkpointing_steps: 50
+
+    # --- runtime / stability knobs (defaults shown; all optional) ---
+    # Startup NCCL timeout (s): covers the staggered checkpoint load, where ranks
+    # legitimately sit in a barrier while a peer reads from CephFS. Raise on slow FS.
+    init_timeout: 5400
+    # Steady-state NCCL timeout (s): applied once training starts. Keep it short so
+    # a real desync aborts with a stack trace instead of stalling.
+    nccl_timeout: 1800
+    # true  = move text encoder / audio VAE / video VAE back to CPU after every step
+    #         (original behaviour, lowest VRAM, but the largest fixed per-step cost).
+    # false = keep them resident on GPU (~12GB more VRAM, removes that cost).
+    offload_frozen_encoders: "true"
+    # Call torch.cuda.empty_cache() every N steps; 0 disables. It is a device-wide
+    # sync that drops the allocator pool, so 1 stalls every step.
+    empty_cache_interval: 1
+    swap_dit_moe_high_noise: "false"
+
+    # Block Sparse Attention (BSA)
+    enable_bsa: "true"
+    bsa_sparsity: 0.75
+    bsa_chunk_3d_shape_q: "4 4 4"
+    bsa_chunk_3d_shape_k: "4 4 4"
+    bsa_cdf_threshold: 0.20
+    enable_bsa_v2a: "false"
+    bsa_v2a_sparsity: 0.875
+    bsa_v2a_audio_chunk_size: 64
+    bsa_v2a_chunk_3d_shape_k: "4 4 4"
+
+    # Audio / Variance Guidance
+    enable_audio_guidance: "false"
+    enable_audio_concentration_gate: "false"
+    enable_timestep_reliability_gate: "false"
+    audio_boost_gamma: 1.0
+    enable_audio_weighted_pooling: "false"
+    audio_weighted_lambda: 1.0
+    enable_variance_guidance: "false"
+    variance_boost_gamma: 1.0
+
+    # Bias Correction
+    enable_taylor_sparse_attn: "false"
+    taylor_alpha_f: 0.5
+    enable_rectified_sparse_attn: "false"
+
+    # Dynamic Block Shape
+    enable_ivpq_dynamic_block: "true"
+    enable_penalty_dynamic_block: "false"
+    dynamic_block_lambda_a: 0.5
+    dynamic_block_tau_128: 0.25
+    dynamic_block_lambda_128: 1.0
+    enable_layer_adaptive_dynamic_block: "false"
+    sparse_attn_high_noise_only: "false"
+
+    data_type: "ti2va"
+    image_batch_size: 16
+
+    # optimizer
+    lr: 1e-5
+    weight_decay: 0.01
+    optimizer: "adamw"
+    max_grad_norm: 1.0
+    gradient_accumulation_steps: 1
+    save_optimizer_state: "false"
+    lr_warmup_steps: 200
+    lr_scheduler: "constant_with_warmup"
+    fsdp_strategy: "full"
+    use_cpu_offload: "false"
+    loss_spike_threshold: 1.5
+    grad_norm_spike_threshold: 1000000.0
+    train_full_model: "true"
+
+  - name: wan_15B_ti2va_1080p_init_top_k_p
+    exp_base: "/path/exp"
+    # resume: "/path/ckpt_folder" load pretrained 720p model weights
+
+    inject_config: "configs/train/t2va_config/wan_15B_ti2va_1080p_init_top_k_p.yaml"
+
+    sp_size: 4
+    fine_grained_gc: "false"
+    checkpointing_steps: 50
+
+    # --- runtime / stability knobs (defaults shown; all optional) ---
+    # Startup NCCL timeout (s): covers the staggered checkpoint load, where ranks
+    # legitimately sit in a barrier while a peer reads from CephFS. Raise on slow FS.
+    init_timeout: 5400
+    # Steady-state NCCL timeout (s): applied once training starts. Keep it short so
+    # a real desync aborts with a stack trace instead of stalling.
+    nccl_timeout: 1800
+    # true  = move text encoder / audio VAE / video VAE back to CPU after every step
+    #         (original behaviour, lowest VRAM, but the largest fixed per-step cost).
+    # false = keep them resident on GPU (~12GB more VRAM, removes that cost).
+    offload_frozen_encoders: "true"
+    # Call torch.cuda.empty_cache() every N steps; 0 disables. It is a device-wide
+    # sync that drops the allocator pool, so 1 stalls every step.
+    empty_cache_interval: 1
+    swap_dit_moe_high_noise: "false"
+
+    # Block Sparse Attention (BSA)
+    enable_bsa: "true"
+    bsa_sparsity: 0.75
+    bsa_chunk_3d_shape_q: "4 4 4"
+    bsa_chunk_3d_shape_k: "4 4 4"
+    bsa_cdf_threshold: 0.20
+    enable_bsa_v2a: "false"
+    bsa_v2a_sparsity: 0.875
+    bsa_v2a_audio_chunk_size: 64
+    bsa_v2a_chunk_3d_shape_k: "4 4 4"
+
+    # Audio / Variance Guidance
+    enable_audio_guidance: "false"
+    enable_audio_concentration_gate: "false"
+    enable_timestep_reliability_gate: "false"
+    audio_boost_gamma: 1.0
+    enable_audio_weighted_pooling: "false"
+    audio_weighted_lambda: 1.0
+    enable_variance_guidance: "false"
+    variance_boost_gamma: 1.0
+
+    # Bias Correction
+    enable_taylor_sparse_attn: "false"
+    taylor_alpha_f: 0.5
+    enable_rectified_sparse_attn: "false"
+
+    # Dynamic Block Shape
+    enable_ivpq_dynamic_block: "true"
+    enable_penalty_dynamic_block: "false"
+    dynamic_block_lambda_a: 0.5
+    dynamic_block_tau_128: 0.25
+    dynamic_block_lambda_128: 1.0
+    enable_layer_adaptive_dynamic_block: "false"
+    sparse_attn_high_noise_only: "false"
+
+    data_type: "ti2va"
+    image_batch_size: 16
+
+    # optimizer
+    lr: 1e-5
+    weight_decay: 0.01
+    optimizer: "adamw"
+    max_grad_norm: 1.0
+    gradient_accumulation_steps: 1
+    save_optimizer_state: "false"
+    lr_warmup_steps: 200
+    lr_scheduler: "constant_with_warmup"
+    fsdp_strategy: "full"
+    use_cpu_offload: "false"
+    loss_spike_threshold: 1.5
+    grad_norm_spike_threshold: 1000000.0
+    train_full_model: "true"
+
+  - name: wan_15B_ti2va_2k_init_top_k_p
+    exp_base: "/path/exp"
+    # resume: "/path/ckpt_folder" load pretrained 1080p model weights
+
+    inject_config: "configs/train/t2va_config/wan_15B_ti2va_2k_init_top_k_p.yaml"
+
+    sp_size: 8
+    fine_grained_gc: "false"
+    checkpointing_steps: 50
+
+    # --- runtime / stability knobs (defaults shown; all optional) ---
+    # Startup NCCL timeout (s): covers the staggered checkpoint load, where ranks
+    # legitimately sit in a barrier while a peer reads from CephFS. Raise on slow FS.
+    init_timeout: 5400
+    # Steady-state NCCL timeout (s): applied once training starts. Keep it short so
+    # a real desync aborts with a stack trace instead of stalling.
+    nccl_timeout: 1800
+    # true  = move text encoder / audio VAE / video VAE back to CPU after every step
+    #         (original behaviour, lowest VRAM, but the largest fixed per-step cost).
+    # false = keep them resident on GPU (~12GB more VRAM, removes that cost).
+    offload_frozen_encoders: "true"
+    # Call torch.cuda.empty_cache() every N steps; 0 disables. It is a device-wide
+    # sync that drops the allocator pool, so 1 stalls every step.
+    empty_cache_interval: 1
+    swap_dit_moe_high_noise: "false"
+
+    # Block Sparse Attention (BSA)
+    enable_bsa: "true"
+    bsa_sparsity: 0.75
+    bsa_chunk_3d_shape_q: "4 4 4"
+    bsa_chunk_3d_shape_k: "4 4 4"
+    bsa_cdf_threshold: 0.20
+    enable_bsa_v2a: "false"
+    bsa_v2a_sparsity: 0.875
+    bsa_v2a_audio_chunk_size: 64
+    bsa_v2a_chunk_3d_shape_k: "4 4 4"
+
+    # Audio / Variance Guidance
+    enable_audio_guidance: "false"
+    enable_audio_concentration_gate: "false"
+    enable_timestep_reliability_gate: "false"
+    audio_boost_gamma: 1.0
+    enable_audio_weighted_pooling: "false"
+    audio_weighted_lambda: 1.0
+    enable_variance_guidance: "false"
+    variance_boost_gamma: 1.0
+
+    # Bias Correction
+    enable_taylor_sparse_attn: "false"
+    taylor_alpha_f: 0.5
+    enable_rectified_sparse_attn: "false"
+
+    # Dynamic Block Shape
+    enable_ivpq_dynamic_block: "true"
+    enable_penalty_dynamic_block: "false"
+    dynamic_block_lambda_a: 0.5
+    dynamic_block_tau_128: 0.25
+    dynamic_block_lambda_128: 1.0
+    enable_layer_adaptive_dynamic_block: "false"
+    sparse_attn_high_noise_only: "false"
+
+    data_type: "ti2va"
+    image_batch_size: 16
+
+    # optimizer
+    lr: 1e-5
+    weight_decay: 0.01
+    optimizer: "adamw"
+    max_grad_norm: 1.0
+    gradient_accumulation_steps: 1
+    save_optimizer_state: "false"
+    lr_warmup_steps: 200
+    lr_scheduler: "constant_with_warmup"
+    fsdp_strategy: "full"
+    use_cpu_offload: "false"
+    loss_spike_threshold: 1.5
+    grad_norm_spike_threshold: 1000000.0
+    train_full_model: "true"
