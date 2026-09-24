@@ -1,0 +1,53 @@
+# ──────────────────────────────────────────────────────────────
+# Prism – core dependencies
+# Install after PyTorch + CUDA (see README for the exact command).
+# ──────────────────────────────────────────────────────────────
+
+# Diffusion & Transformers
+diffusers==0.33.0
+transformers==4.57.1
+accelerate>=1.10.0
+safetensors>=0.6.2
+peft>=0.17.0
+
+# Config & CLI
+omegaconf>=2.3.0
+shyaml>=0.6.2
+einops>=0.8.1
+loguru>=0.7.3
+ftfy>=6.3.0
+
+# Audio codec (DAC VAE)
+descript-audiotools>=0.7.4
+
+# Video I/O
+decord>=0.6.0
+imageio[ffmpeg]>=2.37.0
+imageio[pyav]>=2.37.0
+
+# Image & Vision
+Pillow>=11.0.0
+torchvision>=0.22.0
+torchaudio>=2.7.0
+
+# Attention acceleration (requires CUDA)
+flash-attn>=2.8.0
+triton>=3.3.0
+
+# Sequence parallelism
+yunchang
+
+# Data & Metrics
+numpy>=1.26.0
+pandas>=2.3.0
+tqdm>=4.67.0
+tensorboard>=2.19.0
+wandb>=0.21.0
+
+# Distributed training
+deepspeed>=0.18.0
+
+# Misc utilities
+ipdb>=0.13.0
+mmengine
+scipy>=1.16.0
