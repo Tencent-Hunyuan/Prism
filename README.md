@@ -23,13 +23,13 @@ Prism:Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model 
   </tr>
   <tr>
       <td>
-          <video src="https://github.com/user-attachments/assets/d58afef2-2f45-40b7-8326-5e64cc6b53fb" width="320" controls loop></video>
+          <video src="https://github.com/user-attachments/assets/23dce8c9-8310-4034-9e65-ad4eb0ffbc84" width="320" controls loop></video>
       </td>
       <td>
-          <video src="https://github.com/user-attachments/assets/39a57fdc-499a-46e5-bb00-1628d6d8780f" width="320" controls loop></video>
+          <video src="https://github.com/user-attachments/assets/97ad4884-1503-4234-8384-6d233bfc2f96" width="320" controls loop></video>
       </td>
        <td>
-          <video src="https://github.com/user-attachments/assets/16443caa-490f-4cf7-8115-e380ab57c106" width="320" controls loop></video>
+          <video src="https://github.com/user-attachments/assets/1375e92b-d23c-4314-9817-675ef174d77a" width="320" controls loop></video>
      </td>
   </tr>
 </table>
