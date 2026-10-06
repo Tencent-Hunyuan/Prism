@@ -1,6 +1,6 @@
 # Prism
 
-<a href='https://francis-rings.github.io/Prism'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='https://arxiv.org/abs/'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://huggingface.co/FrancisRing/Prism/tree/main'><img src='https://img.shields.io/badge/HuggingFace-Model-orange'></a> <a href='https://www.youtube.com/watch?v=6lhvmbzvv3Y'><img src='https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube'></a> <a href='https://www.bilibili.com/video/BV1hUt9z4EoQ'><img src='https://img.shields.io/badge/Bilibili-Watch-blue?style=flat-square&logo=bilibili'></a> 
+<a href='https://francis-rings.github.io/Prism'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='https://arxiv.org/abs/2610.05416'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://huggingface.co/FrancisRing/Prism/tree/main'><img src='https://img.shields.io/badge/HuggingFace-Model-orange'></a> <a href='https://www.youtube.com/watch?v=6lhvmbzvv3Y'><img src='https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube'></a> <a href='https://www.bilibili.com/video/BV1hUt9z4EoQ'><img src='https://img.shields.io/badge/Bilibili-Watch-blue?style=flat-square&logo=bilibili'></a> 
 
 Prism:Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training
 <br/>
@@ -352,7 +352,7 @@ If you find our work useful, <b>please consider giving a star ⭐ to this github
 @article{tu2026prism,
   title={Prism:Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training},
   author={Tu, Shuyuan and Tian, Qi and Huang, Yinming and Wu, Yue and Han, Xintong and Pan, Kaihang and Kong, Weijie and Xiong, Jiangfeng and Zhang, Jian-Wei and Wu, Zuxuan and Jiang, Yu-Gang},
-  journal={arXiv preprint arXiv:},
+  journal={arXiv preprint arXiv: 2610.05416},
   year={2026}
 }
 ```
