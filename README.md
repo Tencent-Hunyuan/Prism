@@ -352,7 +352,7 @@ If you find our work useful, <b>please consider giving a star ⭐ to this github
 @article{tu2026prism,
   title={Prism:Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training},
   author={Tu, Shuyuan and Tian, Qi and Huang, Yinming and Wu, Yue and Han, Xintong and Pan, Kaihang and Kong, Weijie and Xiong, Jiangfeng and Zhang, Jian-Wei and Wu, Zuxuan and Jiang, Yu-Gang},
-  journal={arXiv preprint arXiv: 2610.05416},
+  journal={arXiv preprint arXiv:2610.05416},
   year={2026}
 }
 ```
