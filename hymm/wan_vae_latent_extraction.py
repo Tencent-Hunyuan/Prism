@@ -263,8 +263,10 @@ def main():
 
     if args.enable_tiling:
         vae.enable_tiling(
-            tile_sample_min_size=args.tile_sample_min_size,
-            tile_sample_stride_size=args.tile_sample_stride,
+            tile_sample_min_height=args.tile_sample_min_size,
+            tile_sample_min_width=args.tile_sample_min_size,
+            tile_sample_stride_height=args.tile_sample_stride,
+            tile_sample_stride_width=args.tile_sample_stride,
         )
         print(f"[VAE] Tiling enabled: tile_size={args.tile_sample_min_size}, stride={args.tile_sample_stride}")
 
