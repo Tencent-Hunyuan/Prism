@@ -225,7 +225,7 @@ def main():
     parser.add_argument("--output_dir", type=str, required=True,
                         help="Directory to save the output .npy file")
     parser.add_argument("--vae_path", type=str,
-                        default="/path/Prism/checkpoints/pretrained_models/pretrained_models/MOVA-360p/video_vae",
+                        default="/path/Prism/checkpoints/pretrained_models/MOVA-360p/video_vae",
                         help="Path to Wan VAE model directory")
     parser.add_argument("--device", type=str, default="cuda:0")
     parser.add_argument("--sample_size", type=int, default=960,
