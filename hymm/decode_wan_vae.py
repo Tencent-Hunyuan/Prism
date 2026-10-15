@@ -50,7 +50,7 @@ def main():
     parser.add_argument("--output", type=str, default=None,
                         help="Output video path (default: same name as npy with .mp4)")
     parser.add_argument("--vae_path", type=str,
-                        default="/path/Prism/checkpoints/pretrained_models/pretrained_models/MOVA-360p/video_vae")
+                        default="/path/Prism/checkpoints/pretrained_models/MOVA-360p/video_vae")
     parser.add_argument("--device", type=str, default="cuda:0")
     parser.add_argument("--fps", type=float, default=24.0)
     parser.add_argument("--enable_tiling", action="store_true", default=False,

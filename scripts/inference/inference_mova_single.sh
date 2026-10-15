@@ -59,7 +59,7 @@ fi
 # ============================================================================
 # Example: 8 GPUs with CPU offload (recommended — saves ~30GB GPU memory)
 #   bash scripts/inference/inference_mova_single.sh --deepspeed \
-#       --ckpt /path/Prism/checkpoints/pretrained_models/pretrained_models/MOVA-360p \
+#       --ckpt /path/Prism/checkpoints/pretrained_models/MOVA-360p \
 #       --config configs/train/t2va_config/mova_infer.yaml \
 #       --offload cpu \
 #       --height 352 \

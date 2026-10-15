@@ -72,10 +72,10 @@ The Preview Model supports native joint video-audio generation at 720p, 1080p, a
 
 ### 🧱 Environment Setup
 
-**Prerequisites.** Prism requires Python ≥ 3.10, CUDA ≥ 12.4, and a system-level `ffmpeg` installation.
+**Prerequisites.** Prism requires Python ≥ 3.10, CUDA ≥ 12.6, and a system-level `ffmpeg` installation.
 ```
-# 1 — Install PyTorch (CUDA 12.4)
-pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu124
+# 1 — Install PyTorch (CUDA 12.6; torch 2.7.1 has no cu124 build, use cu128 for RTX 50 series / Blackwell GPUs)
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 # 2 — Install core dependencies
 pip install -r requirements.txt
 # 3 — Install FlashAttention (requires CUDA)
@@ -102,7 +102,7 @@ packages across all nodes in parallel:
 export node_ip=$(echo ${NODE_IP_LIST} | sed 's/:8//g')
 pdsh -f 256 -w $node_ip "pip install ipdb yunchang mmengine"
 pdsh -f 256 -w $node_ip "pip uninstall diffusers -y && pip install diffusers==0.33.0"
-pdsh -f 256 -w $node_ip "pip install descript-audiotools"
+pdsh -f 256 -w $node_ip "pip install git+https://github.com/descriptinc/audiotools@0.7.4"
 pdsh -f 256 -w $node_ip "pip install imageio[ffmpeg] imageio[pyav]"
 pdsh -f 256 -w $node_ip "pip install decord"
 pdsh -f 256 -w $node_ip "pip install flash-attn --no-build-isolation"
@@ -133,8 +133,8 @@ Prism/
 │   │   └── diffusion_pytorch_model.safetensors
 │   └── preview_beta/           # Prism-preview-beta weights
 │       └── diffusion_pytorch_model.safetensors
-├── mova_infer.sh
-├── mova_infer_fsdp.sh
+├── prism_infer.sh
+├── prism_infer_fsdp.sh
 ├── requirements.txt
 └── README.md
 ```
@@ -174,9 +174,9 @@ prompt:
 
 ```
 python hymm/wan_vae_latent_extraction.py \
-    --input_csv /path/i2va_raw.csv \
+    --video /path/video.mp4 \
     --output_dir /path/latents \
-    --model_path /path/checkpoints/pretrained_models/MOVA-360p/video_vae \
+    --vae_path /path/checkpoints/pretrained_models/MOVA-360p/video_vae \
     --sample_n_frames 289 --fps 24
 ```
 
@@ -247,16 +247,16 @@ Before running, edit the shell script to set your own paths and generation setti
 | `--prompt` / `--audio_prompt` | —                                           | Text prompt for video / audio generation; supports structured tags such as `<music>`, `<sfx>`, `<speech>` |
 | `--ref_path` | —                                           | Path to the reference image for image-to-video generation |
 | `--output_path` | —                                           | Path to save the generated `.mp4` video |
-| `--sp_size` | `4` or `8`                                  | Sequence-parallelism degree (number of GPUs sharing one sample's token sequence) |
+| `--sp_size` | `4` or `8`                                  | Sequence-parallelism degree (number of GPUs sharing one sample's token sequence). The GPU count must be divisible by it, so set `--sp_size 1` on a single GPU |
 | `--offload` | `cpu`                                       | Offload frozen encoders to CPU to save GPU memory; omit for full GPU-resident inference |
 | `--seed` | `42`                                        | Random seed for reproducibility |
 | `VISUAL_SHIFT` / `AUDIO_SHIFT` | `9.0` / `7.0`                               | Noise schedule shift for video / audio denoising; higher values allocate more steps to high-noise stages. Recommended: 720p `7.0`, 1080p `9.0–13.0`, 2K `13.0–17.0` |
 | `CFG_SCALE` | `5.0`                                       | Classifier-free guidance scale; `1.0` = no guidance, higher = stronger prompt adherence |
 | `ENABLE_TILING` | `false`                                     | Enable spatial tiling for VAE decode to avoid OOM at high resolutions (e.g. 2K); `TILE_SAMPLE_MIN_SIZE` and `TILE_SAMPLE_STRIDE` control tile size and overlap |
 | `ENABLE_BSA` / `BSA_SPARSITY` | `true` / `0.93` or `0.85` or `0.75`         | Enable Prism Block Sparse Attention and set the top-k sparsity ratio during inference |
-| `ENABLE_IVPQ_DYNAMIC_BLOCK` | `true`                                      | Enable dynamic block-shape assignment for inference |
+| `ENABLE_IVPQ_DYNAMIC_BLOCK` | `false` (`prism_infer.sh`) / `true` (`prism_infer_fsdp.sh`) | Enable dynamic block-shape assignment for inference |
 
-> **Tip:** `mova_infer.sh` uses `--deepspeed` launch and is suited for 720p on a single 80 GB GPU (with `--offload cpu`). `mova_infer_fsdp.sh` uses `torchrun` with FSDP `FULL_SHARD` and is recommended for 1080p / 2K on 4+ GPUs, as it shards parameters across all GPUs rather than replicating the full model.
+> **Tip:** `prism_infer.sh` uses `--deepspeed` launch and is suited for 720p on a single 80 GB GPU (with `--offload cpu`). `prism_infer_fsdp.sh` uses `torchrun` with FSDP `FULL_SHARD` and is recommended for 1080p / 2K on 4+ GPUs, as it shards parameters across all GPUs rather than replicating the full model.
 
 **❤️ Notably, for your convenience, we provide several ready-to-infer cases in the `assets/ti2va_cases` folder. Feel free to try them out and have fun! ❤️**
 
