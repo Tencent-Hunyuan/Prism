@@ -55,7 +55,7 @@ Prism further adopts a hybrid block selection strategy to dynamically determine 
 Experiments show that Prism achieves 2.5$\times$ training speedup compared to full attention, while surpassing it in generation quality.
 
 ## News
-* `[2026-x-xx]`:🔥 The project page, training/inference code, technical report and [a preview model checkpoint](https://huggingface.co/FrancisRing/Prism/tree/main) are released. Stay tuned!
+* `[2026-10-06]`:🔥 The project page, training/inference code, technical report and [a preview model checkpoint](https://huggingface.co/FrancisRing/Prism/tree/main) are released. Stay tuned!
 
 ## 🛠️ To-Do List
 - [x] Prism-preview-alpha (stable)
