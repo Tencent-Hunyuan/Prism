@@ -4,9 +4,11 @@
 
 Prism:Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training
 <br/>
-[Shuyuan Tu](https://github.com/Francis-Rings)<sup>1,*</sup>, [Qi Tian](https://scholar.google.com/citations?user=Ypu45nIAAAAJ&hl=zh-CN)<sup>2,*</sup>, [Yinming Huang](https://yinminghuang.github.io/)<sup>1</sup>, [Yue Wu](https://scholar.google.com/citations?user=1xTR6qoAAAAJ&hl=en)<sup>2</sup>, [Xintong Han](https://scholar.google.com/citations?user=FGiWOIAAAAAJ&hl=en)<sup>2</sup>, [Kaihang Pan](https://scholar.google.com/citations?user=lMQADDUAAAAJ&hl=zh-CN)<sup>3</sup>, [Weijie Kong](https://scholar.google.com/citations?user=gsOklKAAAAAJ&hl=zh-CN)<sup>2</sup>, [Jiangfeng Xiong](https://scholar.google.com/citations?user=lHbXg_0AAAAJ&hl=zh-TW)<sup>2</sup>, [Jian-Wei Zhang](https://scholar.google.com/citations?user=nF_klRIAAAAJ&hl=zh-CN)<sup>2</sup>, [Zuxuan Wu](https://scholar.google.com/citations?user=7t12hVkAAAAJ&hl=en)<sup>1</sup>, [Yu-Gang Jiang](https://scholar.google.com/citations?user=f3_FP8AAAAAJ&hl=en)<sup>1</sup>
+[Shuyuan Tu](https://github.com/Francis-Rings)<sup>1,2,\*,‡</sup>, [Qi Tian](https://scholar.google.com/citations?user=Ypu45nIAAAAJ&hl=zh-CN)<sup>2,\*</sup>, [Yinming Huang](https://yinminghuang.github.io/)<sup>1</sup>, [Yue Wu](https://scholar.google.com/citations?user=1xTR6qoAAAAJ&hl=en)<sup>2</sup>, [Xintong Han](https://scholar.google.com/citations?user=FGiWOIAAAAAJ&hl=en)<sup>2</sup>, [Kaihang Pan](https://scholar.google.com/citations?user=lMQADDUAAAAJ&hl=zh-CN)<sup>3</sup>, [Weijie Kong](https://scholar.google.com/citations?user=gsOklKAAAAAJ&hl=zh-CN)<sup>2</sup>, [Jiangfeng Xiong](https://scholar.google.com/citations?user=lHbXg_0AAAAJ&hl=zh-TW)<sup>2</sup>, [Jian-Wei Zhang](https://scholar.google.com/citations?user=nF_klRIAAAAJ&hl=zh-CN)<sup>2,§</sup>, [Zuxuan Wu](https://scholar.google.com/citations?user=7t12hVkAAAAJ&hl=en)<sup>1,†</sup>, [Yu-Gang Jiang](https://scholar.google.com/citations?user=f3_FP8AAAAAJ&hl=en)<sup>1,†</sup>
 <br/>
 [<sup>1</sup>Fudan University; <sup>2</sup>Tencent Hunyuan; <sup>3</sup>Zhejiang University]
+<br/>
+<sup>\*</sup>Equal contribution; <sup>‡</sup>Work done during internship at Tencent Hunyuan; <sup>§</sup>Project leader; <sup>†</sup>Corresponding author
 
 
 <table border="0" style="width: 100%; text-align: left; margin-top: 20px;">
