@@ -225,7 +225,7 @@ def main():
     parser.add_argument("--output_dir", type=str, required=True,
                         help="Directory to save the output .npy file")
     parser.add_argument("--vae_path", type=str,
-                        default="/path/Prism/checkpoints/pretrained_models/pretrained_models/MOVA-360p/video_vae",
+                        default="/path/Prism/checkpoints/pretrained_models/MOVA-360p/video_vae",
                         help="Path to Wan VAE model directory")
     parser.add_argument("--device", type=str, default="cuda:0")
     parser.add_argument("--sample_size", type=int, default=960,
@@ -263,8 +263,10 @@ def main():
 
     if args.enable_tiling:
         vae.enable_tiling(
-            tile_sample_min_size=args.tile_sample_min_size,
-            tile_sample_stride_size=args.tile_sample_stride,
+            tile_sample_min_height=args.tile_sample_min_size,
+            tile_sample_min_width=args.tile_sample_min_size,
+            tile_sample_stride_height=args.tile_sample_stride,
+            tile_sample_stride_width=args.tile_sample_stride,
         )
         print(f"[VAE] Tiling enabled: tile_size={args.tile_sample_min_size}, stride={args.tile_sample_stride}")
 

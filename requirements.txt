@@ -18,7 +18,8 @@ loguru>=0.7.3
 ftfy>=6.3.0
 
 # Audio codec (DAC VAE)
-descript-audiotools>=0.7.4
+# 0.7.4 is not published on PyPI (latest there is 0.7.2), install it from the tag
+descript-audiotools @ git+https://github.com/descriptinc/audiotools@0.7.4
 
 # Video I/O
 decord>=0.6.0

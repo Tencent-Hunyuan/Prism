@@ -12,8 +12,8 @@ ENABLE_CALL=false
 OWNER=owner1
 # the env file
 ENV_FILE=/tmp/resume_train_env.sh 
-# wechat robot
-WEBHOOK_URL=https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=ac700452-14ee-4a06-aa13-db4c57305833
+# wechat robot, set your own webhook here
+WEBHOOK_URL=
 # monitor log directory
 MONITOR_LOG=/tmp/
 

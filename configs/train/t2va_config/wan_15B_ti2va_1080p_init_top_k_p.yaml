@@ -1,7 +1,7 @@
 
 training_config:
 
-  pretrained_model_name_or_path: /path/Prism/checkpoints/pretrained_models/pretrained_models/MOVA-360p
+  pretrained_model_name_or_path: /path/Prism/checkpoints/pretrained_models/MOVA-360p
   master_weight_type: bf16
 
   # loss weight
